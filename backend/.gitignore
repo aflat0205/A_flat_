@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Python tooling
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+
+# Environment variables
+.env
+.env.*
+
+# FastAPI / Uvicorn
+*.log
+
+# OS / Editor
+.DS_Store
+.idea/
+.vscode/
+
+# Build / cache
+build/
+dist/
+*.egg-info/
+
+# Local DB / uploads
+data/
+uploads/
