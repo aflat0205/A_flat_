@@ -1,0 +1,26 @@
+# ── Core ML ──
+# pip install torch torchvision --index-url https://download.pytorch.org/whl/cu___
+torch>=2.1.0
+torchvision>=0.16.0
+
+# ── Diffusion ──
+diffusers>=0.27.0
+transformers>=4.38.0
+accelerate>=0.27.0
+safetensors>=0.4.0
+
+# ── ControlNet + Vision ──
+mediapipe>=0.10.9
+opencv-python>=4.9.0
+
+# ── Hugging Face ──
+huggingface-hub>=0.21.0
+
+# ── General ──
+pillow>=10.0
+numpy>=1.24.0
+scipy>=1.12.0
+python-dotenv>=1.0.0
+
+# ── HTTP (backend communication) ──
+requests>=2.31.0

@@ -1,0 +1,60 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+.venv/
+venv/
+.env
+.env.*
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Worker runtime data (DO NOT COMMIT)
+data/inputs/
+data/outputs/
+
+# template runtime artifacts
+data/templates/**/_work/
+data/templates/**/control.mp4
+data/templates/**/pose.mp4
+
+# If you ever export intermediate videos here
+data/**/*.mp4
+
+# Models / checkpoints (download at runtime)
+models/
+*.ckpt
+*.safetensors
+*.onnx
+*.engine
+*.tflite
+*.task
+
+# Caches (Hugging Face / pip / general)
+.cache/
+**/.cache/
+huggingface/
+**/huggingface/
+pip-wheel-metadata/
+*.log
+
+# diffusers / transformers cache variants
+**/transformers_cache/
+**/diffusers_cache/
+
+# Media / large binaries (extra safety)
+# (Remove these lines to allow sample assets later)
+*.mp4
+*.mov
+*.mkv
+*.avi
+*.webm
+*.gif
+*.png
+*.jpg
+*.jpeg

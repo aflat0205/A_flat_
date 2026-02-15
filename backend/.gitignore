@@ -32,5 +32,4 @@ dist/
 *.egg-info/
 
 # Local DB / uploads
-data/
-uploads/
+app/data/
