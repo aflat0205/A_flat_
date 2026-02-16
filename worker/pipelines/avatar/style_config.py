@@ -18,6 +18,9 @@ class StyleConfig:
     # Post-processing
     color_match_strength: float
     temporal_blend_frames: int
+    # LCM-LoRA optimization
+    lcm_enabled: bool = True
+    lcm_steps: int = 6  # Override num_inference_steps if LCM enabled
 
 
 STYLES: dict[str, StyleConfig] = {
@@ -42,6 +45,8 @@ STYLES: dict[str, StyleConfig] = {
         controlnet_depth_weight=0.8,
         color_match_strength=0.7,
         temporal_blend_frames=2,
+        lcm_enabled=True,
+        lcm_steps=6,
     ),
     "promptable-avatar": StyleConfig(
         style_id="promptable-avatar",
@@ -64,6 +69,8 @@ STYLES: dict[str, StyleConfig] = {
         controlnet_depth_weight=0.7,
         color_match_strength=0.4,
         temporal_blend_frames=2,
+        lcm_enabled=True,
+        lcm_steps=6,
     ),
     "animated-anime": StyleConfig(
         style_id="animated-anime",
@@ -86,6 +93,8 @@ STYLES: dict[str, StyleConfig] = {
         controlnet_depth_weight=0.6,
         color_match_strength=0.2,
         temporal_blend_frames=3,
+        lcm_enabled=True,
+        lcm_steps=6,
     ),
 }
 

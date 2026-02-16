@@ -30,23 +30,26 @@ def download_hf_model(model_id: str, label: str):
 def main():
     print("=== Downloading required models ===\n")
 
-    print("[1/6] MediaPipe Face Landmarker")
+    print("[1/7] MediaPipe Face Landmarker")
     download_face_landmarker()
 
-    print("[2/6] Stable Diffusion 1.5")
+    print("[2/7] Stable Diffusion 1.5")
     download_hf_model(config.SD15_MODEL_ID, "SD1.5")
 
-    print("[3/6] ControlNet OpenPose")
+    print("[3/7] ControlNet OpenPose")
     download_hf_model(config.CONTROLNET_OPENPOSE_ID, "ControlNet OpenPose")
 
-    print("[4/6] ControlNet Depth")
+    print("[4/7] ControlNet Depth")
     download_hf_model(config.CONTROLNET_DEPTH_ID, "ControlNet Depth")
 
-    print("[5/6] MiDaS Depth Estimation")
+    print("[5/7] MiDaS Depth Estimation")
     download_hf_model(config.DEPTH_MODEL_ID, "MiDaS DPT-Hybrid")
 
-    print("[6/6] Anything v5 (Anime style)")
+    print("[6/7] Anything v5 (Anime style)")
     download_hf_model(config.ANIME_MODEL_ID, "Anything v5")
+
+    print("[7/7] LCM-LoRA (optimization)")
+    download_hf_model(config.LCM_LORA_ID, "LCM-LoRA for SD1.5")
 
     print("\n=== All models downloaded ===")
 

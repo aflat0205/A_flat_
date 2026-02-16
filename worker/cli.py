@@ -1,10 +1,56 @@
 
 import argparse
+import os
 import uuid
 from pathlib import Path
 
 from pipelines.avatar.run_job import dispatch
 from pipelines.avatar.style_config import STYLES
+import config
+
+
+def apply_tier_preset(tier: str):
+    """Apply optimization tier preset by setting config attributes."""
+    presets = {
+        "1": {
+            "USE_LCM_LORA": True,
+            "LCM_STEPS": 8,
+            "KEYFRAME_INTERVAL": 1,
+            "INFERENCE_WIDTH": 0,
+            "INFERENCE_HEIGHT": 0,
+        },
+        "2": {
+            "USE_LCM_LORA": True,
+            "LCM_STEPS": 6,
+            "KEYFRAME_INTERVAL": 5,
+            "INFERENCE_WIDTH": 512,
+            "INFERENCE_HEIGHT": 512,
+        },
+        "3": {
+            "USE_LCM_LORA": True,
+            "LCM_STEPS": 4,
+            "KEYFRAME_INTERVAL": 10,
+            "INFERENCE_WIDTH": 384,
+            "INFERENCE_HEIGHT": 384,
+            "ENABLE_UPSCALING": True,
+        },
+        "baseline": {
+            "USE_LCM_LORA": False,
+            "KEYFRAME_INTERVAL": 1,
+            "INFERENCE_WIDTH": 0,
+            "INFERENCE_HEIGHT": 0,
+        },
+    }
+
+    if tier not in presets:
+        raise ValueError(f"Invalid tier '{tier}'. Options: {', '.join(presets.keys())}")
+
+    preset = presets[tier]
+    print(f"\nApplying Tier {tier} preset:")
+    for key, value in preset.items():
+        setattr(config, key, value)
+        print(f"  {key} = {value}")
+    print()
 
 
 def main():
@@ -24,7 +70,16 @@ def main():
     parser.add_argument(
         "--seed", type=int, default=42, help="Random seed (default: 42)"
     )
+    parser.add_argument(
+        "--tier",
+        choices=["1", "2", "3", "baseline"],
+        default="2",
+        help="Optimization tier (1=conservative 4-6min, 2=balanced 1-2min [default], 3=aggressive 30-60sec, baseline=no optimization 30-40min)",
+    )
     args = parser.parse_args()
+
+    # Apply tier preset
+    apply_tier_preset(args.tier)
 
     input_path = Path(args.input)
     if not input_path.exists():
